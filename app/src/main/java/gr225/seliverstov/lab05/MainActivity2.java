@@ -1,0 +1,63 @@
+package gr225.seliverstov.lab05;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class MainActivity2 extends AppCompatActivity {
+EditText txt2;
+Switch sw1, sw2;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main2);
+
+    txt2 = findViewById(R.id.Message2);
+    sw1 = findViewById(R.id.OneSwitch);
+    sw2 = findViewById(R.id.TwoSwitch);
+
+    Intent i = getIntent();
+
+    boolean sww1 = i.getBooleanExtra("1Chek", false);
+    if (sww1 == true)
+    {
+        sw1.setChecked(true);
+    }
+    boolean sww2 = i.getBooleanExtra("2Chek", false);
+    if (sww2 == true){
+        sw2.setChecked(true);
+    }
+        String s  = i.getStringExtra("abc");
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+
+
+    }
+    public void on_ok_click(View v){
+
+        Intent i = new Intent();
+        i.putExtra("1Switch", sw1.isChecked());
+        i.putExtra("2Switch", sw2.isChecked());
+        String s = txt2.getText().toString();
+        i.putExtra("qwe", s);
+
+        setResult(RESULT_OK, i);
+        finish();
+    }
+    public void cansel_click(View v)
+    {
+     setResult(RESULT_CANCELED);
+     finish();
+    }
+
+}
