@@ -37,7 +37,7 @@ Switch sw1, sw2;
         if (ssw2 == false) sw2.setChecked(false);
 
         String s  = i.getStringExtra("abc");
-        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+        txt2.setText(s);
 
 
     }
