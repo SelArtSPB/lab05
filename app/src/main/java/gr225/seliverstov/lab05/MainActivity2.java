@@ -29,15 +29,13 @@ Switch sw1, sw2;
 
     Intent i = getIntent();
 
-    boolean sww1 = i.getBooleanExtra("1Chek", false);
-    if (sww1 == true)
-    {
-        sw1.setChecked(true);
-    }
-    boolean sww2 = i.getBooleanExtra("2Chek", false);
-    if (sww2 == true){
-        sw2.setChecked(true);
-    }
+        boolean ssw1 = i.getBooleanExtra("1Chek", false);
+        if (ssw1 == true) sw1.setChecked(true);
+        if (ssw1 == false) sw1.setChecked(false);
+        boolean ssw2 = i.getBooleanExtra("2Chek", false);
+        if (ssw2 == true) sw2.setChecked(true);
+        if (ssw2 == false) sw2.setChecked(false);
+
         String s  = i.getStringExtra("abc");
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
 
@@ -45,7 +43,7 @@ Switch sw1, sw2;
     }
     public void on_ok_click(View v){
 
-        Intent i = new Intent();
+        Intent i = new Intent(this, MainActivity.class);
         i.putExtra("1Switch", sw1.isChecked());
         i.putExtra("2Switch", sw2.isChecked());
         String s = txt2.getText().toString();

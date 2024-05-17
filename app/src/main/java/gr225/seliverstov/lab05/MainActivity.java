@@ -31,15 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        boolean cch1 = i.getBooleanExtra("1Switch", false);
-        if (cch1 == true)
-        {
-            chk1.setChecked(true);
-        }
-        boolean cch2 = i.getBooleanExtra("2Switch", false);
-        if (cch2 == true){
-            chk2.setChecked(true);
-        }
+
 
 
     }
@@ -105,6 +97,12 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void  onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
     {
+        boolean cch1 = data.getBooleanExtra("1Switch", false);
+        if (cch1 == true) chk1.setChecked(true);
+        else if (cch1 == false) chk1.setChecked(false);
+        boolean cch2 = data.getBooleanExtra("2Switch", false);
+        if (cch2 == true) chk2.setChecked(true);
+        else if (cch2 == false) chk2.setChecked(false);
         if (requestCode == 555)
         {
             if (data != null)
